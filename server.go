@@ -24,7 +24,6 @@ func main() {
 	// Mensaje de inicialización de servidor
 	fmt.Println("Serving @ http://127.0.0.1" + port)
 	log.Fatal(http.ListenAndServe(port, handlers.CORS(headers, methods, origins)(router)))
-
 }
 
 func rootPage(w http.ResponseWriter, r *http.Request) {
@@ -45,7 +44,7 @@ func getDireccion(w http.ResponseWriter, r *http.Request) {
 			log.Fatalln(err)
 		} else {
 			//We Read the response body on the line below.
-			w.Header().Set("content-type", "application/json")
+			w.Header().Set("Content-Type", "application/json; charset=utf-8")
 			w.Write(body)
 		}
 	}
